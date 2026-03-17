@@ -126,20 +126,28 @@ void inserirElemento()
 
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
-	novo->prox = NULL;
-
-	if (primeiro == NULL)
+	if (posicaoElemento(novo->valor) != NULL)
 	{
-		primeiro = novo;
+		cout << "Valor ja existe" << endl;
+		return;
 	}
 	else
 	{
-		// procura o final da lista
-		NO* aux = primeiro;
-		while (aux->prox != NULL) {
-			aux = aux->prox;
+		novo->prox = NULL;
+
+		if (primeiro == NULL)
+		{
+			primeiro = novo;
 		}
-		aux->prox = novo;
+		else
+		{
+			// procura o final da lista
+			NO* aux = primeiro;
+			while (aux->prox != NULL) {
+				aux = aux->prox;
+			}
+			aux->prox = novo;
+		}
 	}
 }
 
@@ -150,7 +158,19 @@ void excluirElemento()
 
 void buscarElemento()
 {
-	
+	int buscar;
+
+	cout << "Insira o elemento para buscar: ";
+	cin >> buscar;
+
+	if (posicaoElemento(buscar) != NULL)
+	{
+		cout << "Elemento encontrado" << endl;
+	}
+	else 
+	{
+		cout << "Elemento nao encontrado" << endl;
+	}
 }
 
 
