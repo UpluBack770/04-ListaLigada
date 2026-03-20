@@ -153,11 +153,47 @@ void inserirElemento()
 
 void excluirElemento()
 {
-	
-}
+	int del;
 
-void buscarElemento()
+	cout << "Insira o elemento para deletar: ";
+	cin >> del;
+	NO* aux = primeiro;
+
+	if (posicaoElemento(del) != NULL)
+	{
+
+		if (posicaoElemento(del) == aux)
+		{
+			primeiro = primeiro->prox;
+
+		}
+		else
+		{
+			NO* atual = primeiro;
+			while (atual != NULL)
+			{
+				if (atual->valor == del)
+				{
+					break;
+				}
+				atual = atual->prox;
+			}
+
+			NO* anterior = primeiro;
+			while (anterior->prox != atual)
+			{
+				anterior = anterior->prox;
+			}
+
+			anterior->prox = atual->prox;
+
+		}
+	}
+
+}
+void buscarElemento() 
 {
+	
 	int buscar;
 
 	cout << "Insira o elemento para buscar: ";
