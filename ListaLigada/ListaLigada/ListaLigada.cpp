@@ -88,7 +88,7 @@ void inicializar()
 }
 
 void exibirQuantidadeElementos() {
-
+	
 	int nElementos = 0;
 	NO* aux = primeiro;
 	while (aux != NULL) {
@@ -96,6 +96,7 @@ void exibirQuantidadeElementos() {
 		aux = aux->prox;
 	}
 	cout << "Quantidade de elementos: " << nElementos << endl;
+	
 
 }
 
@@ -153,7 +154,48 @@ void inserirElemento()
 
 void excluirElemento()
 {
-	
+	int del;
+
+	cout << "Insira o elemento para deletar: ";
+	cin >> del;
+	NO* aux = primeiro;
+
+	if (posicaoElemento(del) != NULL)
+	{
+
+		if (posicaoElemento(del) == aux) 
+		{
+			primeiro = primeiro->prox;
+			
+		}
+		else 
+		{
+			NO* atual = primeiro;
+			while (atual != NULL) 
+			{
+				if (atual->valor == del)
+				{
+					break;
+				}
+				atual = atual->prox;
+			}
+		
+			NO* anterior = primeiro;
+			while (anterior->prox != atual) 
+			{
+				anterior = anterior->prox;
+			}
+
+			anterior->prox = atual->prox;
+
+		}
+		
+		cout << "Elemento deletado" << endl;
+	}
+	else
+	{
+		cout << "Elemento nao encontrado" << endl;
+	}
 }
 
 void buscarElemento()
